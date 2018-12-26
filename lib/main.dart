@@ -1,56 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/generated/i18n.dart';
+import 'package:flutter_login/routing/routing.dart';
 
-void main() async {
-  runApp(App());
-}
+void main() => runApp(new App());
 
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  String _locale = 'en';
-  onChangeLanguage() {
-    if (_locale == 'en') {
-      setState(() {
-        _locale = 'pt';
-        ;
-      });
-    } else {
-      setState(() {
-        _locale = 'en';
-      });
-    }
-  }
+class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        locale: Locale(_locale,""),
-        localizationsDelegates: [S.delegate],
-        supportedLocales: S.delegate.supportedLocales,
-        localeResolutionCallback:
-        S.delegate.resolution(fallback: new Locale("en", "")),
-        home: AppBody(this.onChangeLanguage));
+      locale: Locale("en",""),
+      localizationsDelegates: [S.delegate],
+      supportedLocales: S.delegate.supportedLocales,
+      initialRoute: '/login',
+      routes: routes
+    );
   }
 }
 
-class AppBody extends StatelessWidget {
-  final VoidCallback onChangeLanguage;
-  AppBody(this.onChangeLanguage);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(S.of(context).hello),
-        ),
-        body: new Center(
-          child: new Text(S.of(context).greetTo('Nina')),
-        ),
-        floatingActionButton: new FloatingActionButton(
-            child: new Icon(Icons.language), onPressed: onChangeLanguage));
-  }
-}

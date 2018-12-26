@@ -19,20 +19,15 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
-  String get hello => "Hello!";
-  String greetTo(String name) => "Nice to meet you, $name!";
-}
-
-class $pt extends S {
-  const $pt();
-
-  @override
-  TextDirection get textDirection => TextDirection.ltr;
-
-  @override
   String get hello => "Ola!";
-  @override
+  String get home_button_label => "Ir para tela de login";
+  String get home_message => "Bem vindo a tela Inicial";
+  String get login_button_label => "Ir para tela de inicio";
+  String get login_page_message => "Bem vindo a tela de login";
+  String get main_title => "Flutter Login";
+  String get model => "modelo";
   String greetTo(String name) => "Prazer em conhecê-lo, $name!";
+  String user_name(String name) => "nome do usuatio $name";
 }
 
 class $en extends S {
@@ -44,7 +39,6 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale("pt", ""),
       Locale("en", ""),
     ];
   }
@@ -86,8 +80,6 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     final String lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
-        case "pt":
-          return SynchronousFuture<S>(const $pt());
         case "en":
           return SynchronousFuture<S>(const $en());
         default:
