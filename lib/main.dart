@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_login/constant.dart' show languages;
-import 'package:flutter_login/initialize_i18n.dart' show initializeI18n;
-import 'package:flutter_login/localization.dart'
+import 'package:flutter_login/localizations.dart'
     show MyLocalizations, MyLocalizationsDelegate;
 
 void main() async {
-  Map<String, Map<String, String>> localizedValues = await initializeI18n();
-  runApp(App(localizedValues));
+  runApp(App());
 }
 
 class App extends StatefulWidget {
-  final Map<String, Map<String, String>> localizedValues;
-
-  App(this.localizedValues);
-
   @override
   _AppState createState() => _AppState();
 }
 
 class _AppState extends State<App> {
   String _locale = 'en';
-
   onChangeLanguage() {
     if (_locale == 'en') {
       setState(() {
-        _locale = 'pt';
+        _locale = 'fr';
       });
     } else {
       setState(() {
@@ -37,9 +30,9 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        locale: Locale(_locale),
+        locale: Locale(_locale, ""),
         localizationsDelegates: [
-          MyLocalizationsDelegate(widget.localizedValues),
+          MyLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
@@ -50,7 +43,6 @@ class _AppState extends State<App> {
 
 class AppBody extends StatelessWidget {
   final VoidCallback onChangeLanguage;
-
   AppBody(this.onChangeLanguage);
 
   @override
