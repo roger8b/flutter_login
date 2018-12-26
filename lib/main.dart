@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_login/constant.dart' show languages;
-import 'package:flutter_login/localizations.dart'
-    show MyLocalizations, MyLocalizationsDelegate;
+import 'package:flutter_login/generated/i18n.dart';
 
 void main() async {
   runApp(App());
@@ -18,7 +15,8 @@ class _AppState extends State<App> {
   onChangeLanguage() {
     if (_locale == 'en') {
       setState(() {
-        _locale = 'fr';
+        _locale = 'pt';
+        ;
       });
     } else {
       setState(() {
@@ -30,13 +28,11 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        locale: Locale(_locale, ""),
-        localizationsDelegates: [
-          MyLocalizationsDelegate(),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: languages.map((language) => Locale(language, '')),
+        locale: Locale(_locale,""),
+        localizationsDelegates: [S.delegate],
+        supportedLocales: S.delegate.supportedLocales,
+        localeResolutionCallback:
+        S.delegate.resolution(fallback: new Locale("en", "")),
         home: AppBody(this.onChangeLanguage));
   }
 }
@@ -49,10 +45,10 @@ class AppBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(MyLocalizations.of(context).hello),
+          title: new Text(S.of(context).hello),
         ),
         body: new Center(
-          child: new Text(MyLocalizations.of(context).greetTo('Nina')),
+          child: new Text(S.of(context).greetTo('Nina')),
         ),
         floatingActionButton: new FloatingActionButton(
             child: new Icon(Icons.language), onPressed: onChangeLanguage));

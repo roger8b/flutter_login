@@ -1,6 +1,6 @@
 {
   "@@last_modified": "2018-12-26T14:01:50.249048",
-  "greetTo": "Nice to meet you, {name}!",
+  "greetTo": "Nice to meet you, $name!",
   "@greetTo": {
     "description": "The application title",
     "type": "text",

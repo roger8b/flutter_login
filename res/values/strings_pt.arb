@@ -1,6 +1,6 @@
 {
   "@@last_modified": "2018-12-26T14:01:50.249048",
-  "greetTo": "Nice to meet you, {name}!",
+  "greetTo": "Prazer em conhecê-lo, $name!",
   "@greetTo": {
     "description": "The application title",
     "type": "text",
@@ -8,7 +8,7 @@
       "name": {}
     }
   },
-  "hello": "Hello!",
+  "hello": "Ola!",
   "@hello": {
     "type": "text",
     "placeholders": {}
