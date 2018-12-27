@@ -22,10 +22,12 @@ class S implements WidgetsLocalizations {
   String get email => "Email";
   String get home_button_label => "Ir para tela de login";
   String get home_message => "Bem vindo a tela Inicial";
+  String get invalid_email_message => "O endereço de email deve ser um endereço valido!!!";
   String get login => "Login";
   String get login_button_label => "Ir para tela de inicio";
   String get login_page_message => "Bem vindo a tela de login";
   String get password => "Senha";
+  String get short_password_message => "O campo senha deve ter no minimo  6 caracteres!!!";
   String greetTo(String name) => "Prazer em conhecê-lo, $name!";
 }
 

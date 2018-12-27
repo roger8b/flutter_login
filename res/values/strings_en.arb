@@ -14,5 +14,7 @@
   "home_button_label": "Ir para tela de login",
   "email": "Email",
   "password": "Senha",
-  "login": "Login"
+  "login": "Login",
+  "invalid_email_message": "O endereço de email deve ser um endereço valido!!!",
+  "short_password_message": "O campo senha deve ter no minimo  6 caracteres!!!"
 }

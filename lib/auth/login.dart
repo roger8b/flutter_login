@@ -3,23 +3,24 @@ library flutter_login.routing.auth.login;
 import 'package:flutter/material.dart';
 import 'package:flutter_login/generated/i18n.dart';
 import 'package:flutter_login/utils/util_text_style.dart';
+import 'package:validate/validate.dart';
 
 class _LoginData {
   String email = '';
   String password = '';
 }
 
+class LoginPage extends StatefulWidget {
+  State<StatefulWidget> createState() => new _LoginPageState();
+}
 
-
-class LoginPage extends StatelessWidget {
+class _LoginPageState extends State<LoginPage> {
   _LoginData _data = new _LoginData();
-
   static final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-
-
 
   @override
   Widget build(BuildContext context) {
+
     final email = new TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
@@ -27,6 +28,7 @@ class LoginPage extends StatelessWidget {
         this._data.email = value;
       },
       decoration: InputDecoration(hintText: S.of(context).email),
+      validator: this._validateEmail,
     );
 
     final password = new TextFormField(
@@ -36,6 +38,7 @@ class LoginPage extends StatelessWidget {
         this._data.password = value;
       },
       decoration: InputDecoration(hintText: S.of(context).password),
+      validator: this._validatePassword,
     );
 
     final logo = Image.asset(
@@ -49,9 +52,12 @@ class LoginPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.0),
       child: UtilTextStyle.buttonLabel(S.of(context).login),
       onPressed: () {
-        this.submit(context);
+        if(_formKey.currentState.validate()){
+          this.submit(context);
+        }
       },
     );
+
     return new MaterialApp(
       locale: Locale("en", ""),
       localizationsDelegates: [S.delegate],
@@ -97,5 +103,23 @@ class LoginPage extends StatelessWidget {
       print('Email: ${_data.email}');
       print('Password: ${_data.password}');
     }
+  }
+
+  String _validateEmail(String value) {
+    try {
+      Validate.isEmail(value);
+    } catch (e) {
+      return S.of(context).invalid_email_message;
+    }
+
+    return null;
+  }
+
+  String _validatePassword(String value){
+    if(value.length < 6){
+      return S.of(context).short_password_message;
+    }
+
+    return null;
   }
 }
