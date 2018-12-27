@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.lightBlueAccent,
                   child: UtilTextStyle.buttonLabel(S.of(context).home_button_label) /*buildText(S.of(context).home_button_label)*/,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.popAndPushNamed(context, '/login');
                   },
                 )
               ],

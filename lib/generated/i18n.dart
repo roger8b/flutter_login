@@ -19,15 +19,14 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
-  String get hello => "Ola!";
+  String get email => "Email";
   String get home_button_label => "Ir para tela de login";
   String get home_message => "Bem vindo a tela Inicial";
+  String get login => "Login";
   String get login_button_label => "Ir para tela de inicio";
   String get login_page_message => "Bem vindo a tela de login";
-  String get main_title => "Flutter Login";
-  String get model => "modelo";
+  String get password => "Senha";
   String greetTo(String name) => "Prazer em conhecê-lo, $name!";
-  String user_name(String name) => "nome do usuatio $name";
 }
 
 class $en extends S {

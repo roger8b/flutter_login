@@ -8,21 +8,11 @@
       "name": {}
     }
   },
-  "hello": "Ola!",
-  "@hello": {
-    "type": "text",
-    "placeholders": {}
-  },
-  "user_name": "nome do usuatio $name",
-  "@user_name": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "model": "modelo",
-  "main_title": "Flutter Login",
   "home_message": "Bem vindo a tela Inicial",
   "login_page_message": "Bem vindo a tela de login",
   "login_button_label": "Ir para tela de inicio",
-  "home_button_label": "Ir para tela de login"
+  "home_button_label": "Ir para tela de login",
+  "email": "Email",
+  "password": "Senha",
+  "login": "Login"
 }
